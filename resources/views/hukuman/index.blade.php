@@ -12,12 +12,14 @@ Riwayat Hukuman Disiplin
 </h3>
 
 
+@if(Auth::user()->role == "ADMIN")
 <a href="{{route('hukuman.create')}}"
 class="btn btn-primary">
 
 Tambah
 
 </a>
+@endif
 
 </div>
 
@@ -47,7 +49,9 @@ Tambah
 <th>Status</th>
 <th>Nilai</th>
 <th>Bukti</th>
+@if(Auth::user()->role == "ADMIN")
 <th>Aksi</th>
+@endif
 
 </tr>
 
@@ -123,7 +127,7 @@ Lihat
 </td>
 
 
-
+@if(Auth::user()->role == "ADMIN")
 <td>
 
 <a href="{{route('hukuman.edit',$d)}}"
@@ -152,6 +156,7 @@ Hapus
 
 
 </td>
+@endif
 
 </tr>
 

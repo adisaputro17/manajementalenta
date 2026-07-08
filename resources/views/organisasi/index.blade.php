@@ -11,13 +11,14 @@
 Pengalaman Organisasi Pegawai
 </h3>
 
-
+@if(Auth::user()->role == "ADMIN")
 <a href="{{ route('organisasi.create') }}"
 class="btn btn-primary">
 
 Tambah
 
 </a>
+@endif
 
 </div>
 
@@ -46,7 +47,10 @@ Tambah
 <th>Peran</th>
 <th>Nilai</th>
 <th>Bukti</th>
+
+@if(Auth::user()->role == "ADMIN")
 <th>Aksi</th>
+@endif
 
 </tr>
 
@@ -108,7 +112,7 @@ Lihat
 </td>
 
 
-
+@if(Auth::user()->role == "ADMIN")
 <td>
 
 <a href="{{ route('organisasi.edit',$d) }}"
@@ -136,6 +140,7 @@ Hapus
 </form>
 
 </td>
+@endif
 
 
 </tr>

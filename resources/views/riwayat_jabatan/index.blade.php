@@ -10,13 +10,14 @@
 Riwayat Jabatan
 </h3>
 
-
+@if(Auth::user()->role == "ADMIN")
 <a href="{{ route('riwayat-jabatan.create') }}"
 class="btn btn-primary">
 
 Tambah
 
 </a>
+@endif
 
 </div>
 
@@ -43,7 +44,9 @@ Tambah
 <th>Mulai</th>
 <th>Selesai</th>
 <th>Bukti</th>
+@if(Auth::user()->role == "ADMIN")
 <th>Aksi</th>
+@endif
 
 </tr>
 
@@ -100,6 +103,7 @@ Lihat
 </td>
 
 
+@if(Auth::user()->role == "ADMIN")
 <td>
 
 <a href="{{ route('riwayat-jabatan.edit',$d) }}"
@@ -127,6 +131,7 @@ Hapus
 </form>
 
 </td>
+@endif
 
 </tr>
 

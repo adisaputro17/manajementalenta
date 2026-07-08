@@ -4,7 +4,9 @@
 
 <div class="d-flex justify-content-between mb-3">
     <h3>Pengembangan Kompetensi</h3>
+    @if(Auth::user()->role == "ADMIN")
     <a href="{{ route('kompetensi.create') }}" class="btn btn-primary">+ Tambah</a>
+    @endif
 </div>
 
 <table class="table table-bordered">
@@ -16,7 +18,10 @@
     <th>Kegiatan</th>
     <th>Tahun</th>
     <th>Bukti</th>
+    
+    @if(Auth::user()->role == "ADMIN")
     <th>Aksi</th>
+    @endif
 </tr>
 </thead>
 
@@ -35,6 +40,7 @@
            target="_blank">Lihat</a>
         @endif
     </td>
+    @if(Auth::user()->role == "ADMIN")
     <td>
         <a href="{{ route('kompetensi.edit',$d) }}" class="btn btn-warning btn-sm">Edit</a>
 
@@ -43,6 +49,7 @@
             <button class="btn btn-danger btn-sm" onclick="return confirm('Hapus?')">Hapus</button>
         </form>
     </td>
+    @endif
 </tr>
 @endforeach
 </tbody>

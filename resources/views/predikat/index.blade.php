@@ -5,9 +5,11 @@
 <div class="d-flex justify-content-between mb-3">
     <h3>Predikat Kinerja</h3>
     
-    <a href="{{ route('predikat.create') }}" class="btn btn-primary">
-        Tambah
-    </a>
+    @if(Auth::user()->role == "ADMIN")
+        <a href="{{ route('predikat.create') }}" class="btn btn-primary">
+            Tambah
+        </a>
+    @endif
 </div>
 
 <table class="table table-bordered table-striped">
@@ -17,9 +19,12 @@
             <th>Pegawai</th>
             <th>Tahun</th>
             <th>Predikat</th>
-            <th>Status</th>
-            <th>Keterangan Reject</th>
-            <th>Aksi</th>
+            
+            @if(Auth::user()->role == "ADMIN")
+                <th>Status</th>
+                <th>Keterangan Reject</th>
+                <th>Aksi</th>
+            @endif
         </tr>
     </thead>
 <tbody>
@@ -30,6 +35,8 @@
     <td>{{ $d->pegawai->nama }}</td>
     <td>{{ $d->tahun }}</td>
     <td>{{ $d->keterangan }}</td>
+
+    @if(Auth::user()->role == "ADMIN")
     <td>
         @switch($d->row_status)
             @case('APPROVED')
@@ -73,6 +80,7 @@
             @endif
         @endif
     </td>
+    @endif
 </tr>
 
 <div class="modal fade" id="rejectModal{{ $d->id }}" tabindex="-1">
