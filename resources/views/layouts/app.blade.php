@@ -115,13 +115,12 @@
 </head>
 
 <body>
-
+    
     <!-- SIDEBAR -->
     <div class="sidebar">
-
+        
         <!-- LOGO -->
         <div class="brand">
-            <i class="bi bi-bar-chart-fill"></i><br>
             Talent Management
         </div>
 
@@ -129,18 +128,12 @@
 
         <!-- USER LOGIN -->
         <div class="user-info">
-
-            <img src="https://ui-avatars.com/api/?name={{ urlencode(Auth::user()->nama) }}&background=2563eb&color=ffffff"
-                alt="Avatar">
-
+            <img src="https://ui-avatars.com/api/?name={{ urlencode(Auth::user()->nama) }}&background=2563eb&color=ffffff" alt="Avatar">
             <h6>{{ Auth::user()->nama }}</h6>
-
             <small>NIP : {{ Auth::user()->nip }}</small>
-
             <span class="badge bg-primary">
                 {{ strtoupper(Auth::user()->role) }}
             </span>
-
             @if(Auth::user()->jabatan)
                 <small class="mt-2">
                     <i class="bi bi-briefcase-fill"></i>
@@ -154,7 +147,6 @@
                     {{ Auth::user()->unit_kerja }}
                 </small>
             @endif
-
         </div>
 
         <hr>
@@ -164,10 +156,12 @@
             9 Box Matrix
         </a>
 
-        <a href="/pegawai" class="nav-link">
-            <i class="bi bi-people"></i>
-            Data Pegawai
-        </a>
+        @if(Auth::user()->role == "ADMIN")
+            <a href="/pegawai" class="nav-link">
+                <i class="bi bi-people"></i>
+                Data Pegawai
+            </a>
+        @endif
 
         <div class="section-title">
             Sumbu Y (Kinerja)
@@ -219,10 +213,12 @@
 
         <hr>
 
-        <a href="/talent-weight" class="nav-link">
-            <i class="bi bi-gear"></i>
-            Pengaturan Bobot
-        </a>
+        @if(Auth::user()->role == "ADMIN")
+            <a href="/talent-weight" class="nav-link">
+                <i class="bi bi-gear"></i>
+                Pengaturan Bobot
+            </a>
+        @endif
 
         <form action="{{ route('logout') }}" method="POST" class="mt-2">
             @csrf

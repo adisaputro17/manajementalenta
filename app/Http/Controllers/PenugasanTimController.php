@@ -63,7 +63,7 @@ class PenugasanTimController extends Controller
             'nama_tim'=>$request->nama_tim,
             'tahun'=>$request->tahun,
             'bukti'=>$bukti,
-            'row_status'=>'PENDING'
+            'row_status'=>'APPROVED'
         ]);
         
         return redirect()->route('penugasan.index')->with(
@@ -119,7 +119,7 @@ class PenugasanTimController extends Controller
             'nama_tim'=>$request->nama_tim,
             'tahun'=>$request->tahun,
             'bukti'=>$bukti,
-            'row_status'=>'PENDING',
+            'row_status'=>'APPROVED',
             'approved_by'=>null,
             'approved_at'=>null,
             'reject_reason'=>null

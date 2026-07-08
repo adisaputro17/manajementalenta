@@ -53,7 +53,7 @@ class PredikatKinerjaController extends Controller
             'tahun'=>$request->tahun,
             'nilai'=>$request->nilai,
             'keterangan'=>$this->getKeterangan($request->nilai),
-            'row_status'=>'PENDING'
+            'row_status'=>'APPROVED'
         ]);
         
         return redirect()->route('predikat.index')->with(
@@ -105,7 +105,7 @@ class PredikatKinerjaController extends Controller
             'tahun'=>$request->tahun,
             'nilai'=>$request->nilai,
             'keterangan'=>$this->getKeterangan($request->nilai),
-            'row_status'=>'PENDING',
+            'row_status'=>'APPROVED',
             'approved_by'=>null,
             'approved_at'=>null,
             'reject_reason'=>null
