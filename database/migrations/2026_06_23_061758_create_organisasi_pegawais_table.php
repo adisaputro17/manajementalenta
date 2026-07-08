@@ -1,0 +1,37 @@
+<?php
+
+use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\Schema;
+
+return new class extends Migration
+{
+    /**
+     * Run the migrations.
+     */
+    public function up(): void
+    {
+        Schema::create('organisasi_pegawais', function (Blueprint $table) {
+            $table->id();
+            $table->foreignId('pegawai_id')->constrained('pegawais')->cascadeOnDelete();
+            $table->string('nama_organisasi');
+            $table->enum('peran', [
+                'pimpinan',
+                'pengurus',
+                'anggota',
+            ]);
+            $table->year('tahun_mulai')->nullable();
+            $table->year('tahun_selesai')->nullable();
+            $table->string('bukti')->nullable(); 
+            $table->timestamps();
+        });
+    }
+
+    /**
+     * Reverse the migrations.
+     */
+    public function down(): void
+    {
+        Schema::dropIfExists('organisasi_pegawais');
+    }
+};
