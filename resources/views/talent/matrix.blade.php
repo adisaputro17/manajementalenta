@@ -82,6 +82,11 @@
                     <h5>Box {{ $box['no'] }}</h5>
                     <strong>{{ $box['title'] }}</strong>
                     <br>
+                    <a href="{{ route('talent.matrix.export', $key) }}"
+                        class="btn btn-sm btn-success mt-2">
+                        <i class="fas fa-file-excel"></i> Export
+                    </a>
+                    <br>
                     <small class="text-muted">
                         {{ $box['description'] }}
                     </small>

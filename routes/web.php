@@ -64,6 +64,7 @@ Route::middleware('auth')->group(function () {
 
     Route::get('/talent/matrix', [TalentMatrixController::class, 'index'])
         ->name('talent.matrix');
+    Route::get('/talent/matrix/export/{box}', [TalentMatrixController::class, 'export'])->name('talent.matrix.export');
 
     // Master
     Route::resource('pegawai', PegawaiController::class);
